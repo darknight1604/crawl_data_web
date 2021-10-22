@@ -11,6 +11,7 @@ const ProductCard = (props: { product: Product}) => {
   if(props.product.price_group.price_to){
     priceTo = ' - ' + props.product.price_group.price_to.price + props.product.price_group.price_to.unit
   }
+  const productName = props.product.product_name
   const card = (
     <React.Fragment>
         <CardMedia
@@ -18,18 +19,12 @@ const ProductCard = (props: { product: Product}) => {
           // height="140"
           image={image_url}
           alt="image"
+          title={productName}
         />
         <CardContent>
-            <Box
-              fontSize="h5.fontSize"
-              component="div" 
-              overflow="inherit"            
-              whiteSpace="pre-line"
-              textOverflow="ellipsis" height={30}
-              sx={{ textAlign: 'left', fontSize: 13,}}
-            >
-              {props.product.product_name}
-            </Box>
+            <Typography gutterBottom component="div" sx={{fontSize: 13}} noWrap={true} title={productName}> 
+              {productName}
+            </Typography>
             <Typography gutterBottom component="div" sx={{color: red[500], mt: "2rem", fontSize: 14}}> 
               {price} {priceTo}
             </Typography>
