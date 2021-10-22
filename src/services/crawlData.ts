@@ -3,7 +3,7 @@ import {Product} from '../types/product';
 
 export const crawlData = createApi({
     reducerPath: 'crawlData',
-    baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:4001/api/'}),
+    baseQuery: fetchBaseQuery({baseUrl: 'https://d980-42-114-225-40.ngrok.io/api/'}),
     endpoints: (builder) => ({
         getDataCollection: builder.query<Array<Product>, void>({
             query: () => `crawl-data/0`,
