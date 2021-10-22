@@ -23,9 +23,7 @@ const ShopeeSoldOutCollection = () => {
         );
     }else if (error){
         return (
-            <div>
-                {error} {JSON.stringify(error)}
-            </div>
+            <div></div>
         )
     }
     return (

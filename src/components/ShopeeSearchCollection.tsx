@@ -14,11 +14,16 @@ const ShopeeSearchCollection = () => {
             </Grid>
         );
     } else if(data !== undefined && data.length > 0){
-        listItems = data.map((product) => 
+        var successCrawlData = data.filter(item => item.image_product !== "");
+        listItems = successCrawlData.map((product) => 
             <Grid item xs={2} key={product.id.toString()}>
                 <ProductCard product={product}/>
             </Grid>
         );
+    }else if (error){
+        return (
+            <div></div>
+        )
     }
     return (
         <div>
