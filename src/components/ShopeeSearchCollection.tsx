@@ -8,14 +8,14 @@ const ShopeeSearchCollection = () => {
 
     var listItems;
     if(isLoading){
-        listItems = Array.from(new Array(6)).map(() => 
-            <Grid item xs={2}>
+        listItems = Array.from(new Array(6)).map((emptyItem, index) => 
+            <Grid item xs={2} key={index.toString()}>
                 <ProductCardSkeleton />
             </Grid>
         );
     } else if(data !== undefined && data.length > 0){
         listItems = data.map((product) => 
-            <Grid item xs={2}>
+            <Grid item xs={2} key={product.id.toString()}>
                 <ProductCard product={product}/>
             </Grid>
         );

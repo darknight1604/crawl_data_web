@@ -2,23 +2,31 @@ import { Grid, Typography } from "@mui/material";
 import { useGetDataSoldOutQuery } from "../services/crawlData";
 import  ProductCard  from "./ProductCard";
 import ProductCardSkeleton from "./ProductCardSkeleton";
+import { useState } from "react";
 
 const ShopeeSoldOutCollection = () => {
     const { data, error, isLoading } = useGetDataSoldOutQuery();
 
     var listItems;
     if(isLoading){
-        listItems = Array.from(new Array(6)).map(() => 
-            <Grid item xs={2}>
+        listItems = Array.from(new Array(6)).map((emptyItem, index) => 
+            <Grid item xs={2} key={index.toString()}>
                 <ProductCardSkeleton />
             </Grid>
         );
     } else if(data !== undefined && data.length > 0){
-        listItems = data.map((product) => 
-            <Grid item xs={2}>
+        var successCrawlData = data.filter(item => item.image_product !== "");
+        listItems = successCrawlData.map((product) => 
+            <Grid item xs={2} key={product.id.toString()}>
                 <ProductCard product={product}/>
             </Grid>
         );
+    }else if (error){
+        return (
+            <div>
+                {error} {JSON.stringify(error)}
+            </div>
+        )
     }
     return (
         <div>
