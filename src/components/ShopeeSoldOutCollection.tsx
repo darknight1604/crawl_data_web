@@ -2,7 +2,6 @@ import { Grid, Typography } from "@mui/material";
 import { useGetDataSoldOutQuery } from "../services/crawlData";
 import  ProductCard  from "./ProductCard";
 import ProductCardSkeleton from "./ProductCardSkeleton";
-import { useState } from "react";
 
 const ShopeeSoldOutCollection = () => {
     const { data, error, isLoading } = useGetDataSoldOutQuery();

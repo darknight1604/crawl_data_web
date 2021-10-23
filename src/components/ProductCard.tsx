@@ -1,6 +1,5 @@
 import React from "react";
 import {  Card, CardContent, CardMedia, Typography,  } from "@mui/material";
-import { Box } from "@mui/system";
 import { Product } from "../types/product";
 import { red } from '@mui/material/colors';
 
