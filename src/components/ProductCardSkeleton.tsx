@@ -28,7 +28,7 @@ const ProductCardSkeleton = () => {
     
 
   return (
-      <Card variant="outlined" sx={{ maxHeight: 320 }}>
+      <Card variant="outlined" sx={{ maxHeight: 320, maxWidth: 220 }}>
         {card}
       </Card>  
   )
