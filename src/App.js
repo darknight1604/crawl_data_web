@@ -4,9 +4,11 @@ import { useGetDataCollectionQuery, } from './services/crawlData';
 import ShopeeCollection from './components/ShopeeCollection';
 import ShopeeSearchCollection from './components/ShopeeSearchCollection';
 import ShopeeSoldOutCollection from './components/ShopeeSoldOutCollection';
+import { Grid } from '@mui/material';
+import ErrorData from './components/ErrorData';
 
 function App() {
-  const { data, _error, isLoading } = useGetDataCollectionQuery();
+  const { data, error, isLoading } = useGetDataCollectionQuery();
   
   if(isLoading){
     return (
@@ -17,12 +19,25 @@ function App() {
         </header>
       </div>
     );
+  }else if(error){
+    return <ErrorData nameArea="Top search"/>
   }
   return (
     <div className="App">
-      <ShopeeCollection products={data}/>
-      <ShopeeSearchCollection />
-      <ShopeeSoldOutCollection />
+      <Grid container>
+          <Grid item lg={2} xs={3}>
+              <div></div>
+          </Grid>
+          <Grid item xs={6} md={12} sm={12} lg={8}> 
+            <ShopeeCollection products={data}/>
+            <ShopeeSearchCollection />
+            <ShopeeSoldOutCollection />
+          </Grid>
+          <Grid item lg={2} xs={3}>
+              <div></div>
+          </Grid>
+      </Grid>
+      
       <br/>
     </div>
   );
