@@ -1,17 +1,17 @@
-import { Grid, Typography } from "@mui/material";
+import { Grid, ThemeProvider, Typography } from "@mui/material";
 import { useGetDataSearchViewQuery } from "../services/crawlData";
 import ErrorData from "./ErrorData";
 import  ProductCard  from "./ProductCard";
 import ProductCardSkeleton from "./ProductCardSkeleton";
 
-const ShopeeSearchCollection = () => {
-    const nameArea = "Search collection";
+const ShopeeSearchCollection = (props: { titleTheme: any}) => {
+    const nameArea = "List products";
     const { data, error, isLoading } = useGetDataSearchViewQuery();
 
     var listItems;
     if(isLoading){
         listItems = Array.from(new Array(6)).map((emptyItem, index) => 
-            <Grid item xs={12} sm={12} md={2} lg={2} key={index.toString()}>
+            <Grid item xs={12} sm={3} md={2} lg={2} key={index.toString()}>
                 <ProductCardSkeleton />
             </Grid>
         );
@@ -19,7 +19,7 @@ const ShopeeSearchCollection = () => {
         if(data.length > 0){
             var successCrawlData = data.filter(item => item.image_product !== "");
             listItems = successCrawlData.map((product) => 
-                <Grid item xs={12} sm={12} md={2} lg={2} key={product.id.toString()}>
+                <Grid item xs={12} sm={3} md={2} lg={2} key={product.id.toString()}>
                     <ProductCard product={product}/>
                 </Grid>
             );
@@ -31,9 +31,11 @@ const ShopeeSearchCollection = () => {
     }
     return (
         <div>
-            <Typography variant="h3" gutterBottom component="div" sx={{ textAlign: 'left' }}> 
-                {nameArea}
-            </Typography>
+            <ThemeProvider theme={props.titleTheme}>
+                <Typography variant="h3" gutterBottom component="div" sx={{ textAlign: 'left' }}> 
+                    {nameArea}
+                </Typography>
+            </ThemeProvider>
             <Grid container spacing={2}>
                 {listItems}
             </Grid>
