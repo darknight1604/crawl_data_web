@@ -24,7 +24,7 @@ const ProductCard = (props: { product: Product}) => {
             <Typography gutterBottom component="div" sx={{fontSize: 13}} noWrap={true} title={productName}> 
               {productName}
             </Typography>
-            <Typography gutterBottom component="div" sx={{color: red[500], mt: "2rem", fontSize: 14}}> 
+            <Typography gutterBottom component="div" noWrap={true} sx={{color: red[500], mt: "2rem", fontSize: 14}} title={price + "" + priceTo}> 
               {price} {priceTo}
             </Typography>
         </CardContent>
