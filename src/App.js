@@ -29,15 +29,15 @@ function App() {
   return (
     <div className="App">
       <Grid container>
-          <Grid item lg={2} xs={3}>
+          <Grid item lg={2} >
               <div></div>
           </Grid>
-          <Grid item xs={6} md={12} sm={12} lg={8}> 
+          <Grid item xs={12} md={12} sm={12} lg={8}> 
             <ShopeeCollection products={data} titleTheme={theme}/>
             <ShopeeSearchCollection titleTheme={theme}/>
             <ShopeeSoldOutCollection titleTheme={theme}/>
           </Grid>
-          <Grid item lg={2} xs={3}>
+          <Grid item lg={2} >
               <div></div>
           </Grid>
       </Grid>
