@@ -8,7 +8,7 @@ const ShopeeCollection = (props: { products: Array<Product>, titleTheme: any}) =
     var listItems;
     if(props.products && props.products !== undefined &&  props.products.length > 0){
         listItems = props.products.map((product) => 
-            <Grid item xs={12} sm={3} md={2} lg={2} key={product.id.toString()}>
+            <Grid item xs={6} sm={3} md={2} lg={2} key={product.id.toString()}>
                 <ProductCard product={product} />
             </Grid>
         );

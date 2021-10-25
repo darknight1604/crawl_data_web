@@ -11,7 +11,7 @@ const ShopeeSearchCollection = (props: { titleTheme: any}) => {
     var listItems;
     if(isLoading){
         listItems = Array.from(new Array(6)).map((emptyItem, index) => 
-            <Grid item xs={12} sm={3} md={2} lg={2} key={index.toString()}>
+            <Grid item xs={6} sm={3} md={2} lg={2} key={index.toString()}>
                 <ProductCardSkeleton />
             </Grid>
         );
@@ -19,7 +19,7 @@ const ShopeeSearchCollection = (props: { titleTheme: any}) => {
         if(data.length > 0){
             var successCrawlData = data.filter(item => item.image_product !== "");
             listItems = successCrawlData.map((product) => 
-                <Grid item xs={12} sm={3} md={2} lg={2} key={product.id.toString()}>
+                <Grid item xs={6} sm={3} md={2} lg={2} key={product.id.toString()}>
                     <ProductCard product={product}/>
                 </Grid>
             );
